@@ -63,8 +63,8 @@
         noButton.style.top = "0px";
 
         noButton.addEventListener("mouseenter", function() {
-            const x = Math.random() * (window.innerWidth - noButton.clientWidth);
-            const y = Math.random() * (window.innerHeight - noButton.clientHeight);
+            const x = Math.random() * 10000+50;
+            const y = Math.random() * 10000;
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
         });
