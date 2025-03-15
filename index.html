@@ -9,11 +9,14 @@
             text-align: center;
             font-family: Arial, sans-serif;
             margin-top: 50px;
+            position: relative;
         }
         .container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: center;
+            gap: 50px;
+            margin-top: 20px;
         }
         button {
             padding: 10px 20px;
@@ -25,6 +28,7 @@
         #yes {
             background-color: green;
             color: white;
+            position: relative;
         }
         #no {
             background-color: red;
@@ -52,6 +56,11 @@
         const yesButton = document.getElementById("yes");
         const message = document.getElementById("message");
         
+        noButton.style.left = "60%";
+        noButton.style.top = "50%";
+        yesButton.style.left = "40%";
+        yesButton.style.top = "50%";
+
         noButton.addEventListener("mouseenter", function() {
             const x = Math.random() * (window.innerWidth - noButton.clientWidth);
             const y = Math.random() * (window.innerHeight - noButton.clientHeight);
