@@ -10,12 +10,14 @@
             font-family: Arial, sans-serif;
             margin-top: 50px;
             position: relative;
+            background: url('https://i.pinimg.com/originals/41/c3/41/41c3411c379878f87a1fbe9c557c4ef8.gif') no-repeat center center fixed;
+            background-size: cover;
         }
         .container {
             display: flex;
-            justify-content: center;
             gap: 50px;
             margin-top: 20px;
+            position: relative;
         }
         button {
             padding: 10px 20px;
@@ -28,11 +30,13 @@
             background-color: green;
             color: white;
             position: relative;
+            left: 60%;
         }
         #no {
             background-color: red;
             color: white;
-            position: absolute;
+            position: relative;
+            left:50%
         }
         #message {
             margin-top: 20px;
@@ -48,7 +52,7 @@
         <button id="yes">Yes</button>
         <button id="no">No</button>
     </div>
-    <p id="message">Cảm ơn Ánh Linh!</p>
+    <p id="message">Cảm ơn bạn!</p>
 
     <script>
         const noButton = document.getElementById("no");
@@ -56,9 +60,7 @@
         const message = document.getElementById("message");
         
         noButton.style.left = "30%";
-        noButton.style.top = "50%";
-        yesButton.style.left = "0%";
-        yesButton.style.top = "50%";
+        noButton.style.top = "0px";
 
         noButton.addEventListener("mouseenter", function() {
             const x = Math.random() * (window.innerWidth - noButton.clientWidth);
@@ -68,7 +70,7 @@
         });
         
         yesButton.addEventListener("click", function() {
-            message.style.display = "block"; console.log("Người dùng đã chọn Yes");
+            message.style.display = "block";
         });
     </script>
 </body>
