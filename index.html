@@ -15,10 +15,10 @@
         }
         .container {
             display: flex;
-            justify-content: center;
             gap: 50px;
             margin-top: 20px;
             position: relative;
+            
         }
         button {
             padding: 10px 20px;
@@ -29,17 +29,20 @@
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
             color: white;
             background-color: #FF6B81;
-            transition: transform 0.3s ease-in-out;
+
         }
-        #yes:hover {
-            transform: scale(1.1);
-            background-color: #ff9eac;
+        #yes {position: relative;
+            left: 60%;
+
         }
+        #yes:hover{color: white; 
+            transform: scale(1.1);background-color: #ff9eac}
+            
         #no {
-            position: absolute;
+            position: relative;
         }
         #message {
-            margin-top: 50px;
+            margin-top: 200px;
             font-size: 40px;
             color: #1976D2;
             font-style: italic;
@@ -51,10 +54,11 @@
         gap: 20px;
     }
 }
+
     </style>
 </head>
 <body>
-    <h1>Ánh Linh có muốn nhảy Flashmob với tui hong 😊</h1>
+    <h1>Ánh Linh có muốn nhảy Flashmob với tui hong😊</h1>
     <div class="container">
         <button id="yes">Yes</button>
         <button id="no">No</button>
@@ -65,47 +69,32 @@
         const noButton = document.getElementById("no");
         const yesButton = document.getElementById("yes");
         const message = document.getElementById("message");
+        
 
-        let isFirstMove = true;
-        let container = document.querySelector(".container");
-
-        function getRandomPosition() {
-            let containerRect = container.getBoundingClientRect();
-            let yesRect = yesButton.getBoundingClientRect();
-            let buttonWidth = noButton.offsetWidth;
-            let buttonHeight = noButton.offsetHeight;
-            let maxAttempts = 100, attempt = 0;
-            
-            let newX, newY, distance;
-            do {
-                newX = Math.random() * (containerRect.width - buttonWidth);
-                newY = Math.random() * (containerRect.height - buttonHeight);
-                distance = Math.sqrt(Math.pow(newX - yesRect.left, 2) + Math.pow(newY - yesRect.top, 2));
-                attempt++;
-            } while (distance < 100 && attempt < maxAttempts); // Đảm bảo cách xa Yes ít nhất 100px
-            
-            return { x: newX, y: newY };
-        }
-
+        let lastX = 0, lastY = 0;
+        noButton.style.left = "30%";
+        noButton.style.top = "0px";
+        
         noButton.addEventListener("mouseenter", function() {
-            if (isFirstMove) {
-                noButton.style.position = "absolute";
-                isFirstMove = false;
-            }
-
-            let { x, y } = getRandomPosition();
-            noButton.style.transform = `translate(${x}px, ${y}px)`;
+            let newX, newY;
+            do {
+                newX = Math.random()*50+25;
+                newY = Math.random()*200+100;
+            } while (Math.abs(newX - lastX) < 10 && Math.abs(newY - lastY) < 10); 
+            
+            lastX = newX;
+            lastY = newY;
+            
+            noButton.style.left =  `${newX}%`;
+            noButton.style.top = `${newY}px`;
         });
 
+    
+        
         yesButton.addEventListener("click", function() {
             message.style.display = "block";
-            yesButton.style.opacity = "0";
-            noButton.style.opacity = "0";
-
-            setTimeout(() => {
-                yesButton.style.display = "none"; 
-                noButton.style.display = "none";
-            }, 500);
+            yesButton.style.display = "none"; 
+            noButton.style.display = "none";
         });
     </script>
 </body>
