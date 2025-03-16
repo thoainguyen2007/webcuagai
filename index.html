@@ -52,13 +52,20 @@
     .container {
         flex-direction: column;
         gap: 20px;
-        align-items: center; /* Căn giữa các nút */
+        align-items: center; /* Đảm bảo các nút căn giữa */
+        justify-content: center;
     }
     button {
-        max-width: 80%; /* Giới hạn chiều rộng nút */
-        font-size: 16px; /* Giảm kích thước chữ nếu cần */
+        max-width: 80%;
+        font-size: 16px;
+        text-align: center; /* Căn chữ trong nút vào giữa */
+        display: block;
+    }
+    #no, #yes {
+        position: static; /* Tránh bị lệch do position: relative */
     }
 }
+
 
     </style>
 </head>
